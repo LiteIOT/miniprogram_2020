@@ -1,0 +1,36 @@
+<!--index.wxml-->
+<view class="page">
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label" style='width:65px;'>查询</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" type="text" bindinput="inputclick" bindconfirm="btnclick" placeholder="请输入食物名称"
+          value='{{search_text}}' />
+      </view>
+    </view>
+  </view>
+
+  <view wx:if="{{!showResult}}">
+    <view class="view_desp">
+      <text type="button">热门查询</text>
+    </view>
+
+    <view class="view_list">
+      <view class="view_text" wx:for="{{foodList}}" wx:key="key" bindtap="searchFood" data-food="{{item}}">
+        <text type="btn">{{item}}</text>
+      </view>
+    </view>
+  </view>
+  <view class="sugar_view" wx:if="{{showResult}}">
+    <view>
+      <canvas canvas-id="myCanvas" style="height:200px"></canvas>
+    </view>
+    <view class="sugar_view_title">
+      <text decode="{{true}}" style="margin:0 40px; white-space:pre-wrap;"> {{sugar_desp}}</text>
+    </view>
+
+  </view>
+
+</view>
